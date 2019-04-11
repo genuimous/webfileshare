@@ -1,13 +1,13 @@
 <%@ Page language="c#" Codebehind="Admin.aspx.cs" AutoEventWireup="false" Inherits="WebFileShare.Admin" %>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" >
-<HTML>
-	<HEAD>
+<html>
+	<head>
 		<title>WebFileShare</title>
 		<meta name="GENERATOR" Content="Microsoft Visual Studio .NET 7.1">
 		<meta name="CODE_LANGUAGE" Content="C#">
 		<meta name="vs_defaultClientScript" content="JavaScript">
 		<meta name="vs_targetSchema" content="http://schemas.microsoft.com/intellisense/ie5">
-	</HEAD>
+	</head>
 	<body MS_POSITIONING="GridLayout">
 		<form id="AdminForm" method="post" runat="server" style="MARGIN: 50px; FONT-FAMILY: Sans-Serif; TEXT-ALIGN: center">
 			<div style="MARGIN: 0px auto; WIDTH: 1100px">
@@ -47,10 +47,10 @@
 						</tr>
 					</table>
 					<div style="MARGIN-TOP: 25px">
-						<asp:Label id="AddErrorLabel" runat="server" ForeColor="Red"></asp:Label>
+						<asp:label id="AddErrorLabel" runat="server" ForeColor="Red"></asp:label>
 					</div>
 				</div>
 			</div>
 		</form>
 	</body>
-</HTML>
+</html>

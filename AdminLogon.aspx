@@ -1,13 +1,13 @@
 <%@ Page language="c#" Codebehind="AdminLogon.aspx.cs" AutoEventWireup="false" Inherits="WebFileShare.AdminLogon" %>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" >
-<HTML>
-	<HEAD>
+<html>
+	<head>
 		<title>WebFileShare</title>
 		<meta name="GENERATOR" Content="Microsoft Visual Studio .NET 7.1">
 		<meta name="CODE_LANGUAGE" Content="C#">
 		<meta name="vs_defaultClientScript" content="JavaScript">
 		<meta name="vs_targetSchema" content="http://schemas.microsoft.com/intellisense/ie5">
-	</HEAD>
+	</head>
 	<body MS_POSITIONING="GridLayout">
 		<form id="AdminLogonForm" method="post" runat="server" style="MARGIN: 50px; FONT-FAMILY: Sans-Serif; TEXT-ALIGN: center">
 			<div style="MARGIN: 0px auto; WIDTH: 600px">
@@ -27,7 +27,7 @@
 											<span style="FONT-SIZE: small">Имя:</span>
 										</td>
 										<td>
-											<asp:TextBox id="LoginTextBox" runat="server" Width="150px"></asp:TextBox>
+											<asp:textbox id="LoginTextBox" runat="server" Width="150px"></asp:textbox>
 										</td>
 									</tr>
 									<tr>
@@ -35,21 +35,21 @@
 											<span style="FONT-SIZE: small">Пароль:</span>
 										</td>
 										<td>
-											<asp:TextBox id="PasswordTextBox" runat="server" Width="150px" TextMode="Password"></asp:TextBox>
+											<asp:textbox id="PasswordTextBox" runat="server" Width="150px" TextMode="Password"></asp:textbox>
 										</td>
 									</tr>
 								</table>
 							</td>
 							<td>
-								<asp:Button id="LogonButton" runat="server" Width="100px" Text="Продолжить"></asp:Button>
+								<asp:button id="LogonButton" runat="server" Width="100px" Text="Продолжить"></asp:button>
 							</td>
 						</tr>
 					</table>
 				</div>
 				<div style="MARGIN-TOP: 25px">
-					<asp:Label id="LogonErrorLabel" runat="server" ForeColor="Red"></asp:Label>
+					<asp:label id="LogonErrorLabel" runat="server" ForeColor="Red"></asp:label>
 				</div>
 			</div>
 		</form>
 	</body>
-</HTML>
+</html>
