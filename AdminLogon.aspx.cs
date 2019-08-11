@@ -51,8 +51,8 @@ namespace WebFileShare
 
 		private void LogonButton_Click(object sender, System.EventArgs e)
 		{
-			string login = LoginTextBox.Text.Trim();
-			string password = PasswordTextBox.Text.Trim();
+			string login = LoginTextBox.Text.Trim().Replace("'", "''");
+			string password = PasswordTextBox.Text.Trim().Replace("'", "''");
 
 			if ((login.Length > 0) & (password.Length > 0))
 			{
@@ -80,7 +80,7 @@ namespace WebFileShare
 				}
 				else
 				{
-					LogonErrorLabel.Text = "Неверное сеочетание имени и пароля!";
+					LogonErrorLabel.Text = "Неверное сочетание имени и пароля!";
 				}
 			}
 			else

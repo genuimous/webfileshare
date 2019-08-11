@@ -167,8 +167,8 @@ namespace WebFileShare
 
 		private void AddButton_Click(object sender, System.EventArgs e)
 		{
-			string dirVisibleName = DirVisibleNameTextBox.Text.Trim();
-			string dirName = DirNameTextBox.Text.Trim();
+			string dirVisibleName = DirVisibleNameTextBox.Text.Trim().Replace("'", "''");
+			string dirName = DirNameTextBox.Text.Trim().Replace("'", "''");
 
 			if (dirName.Length > 0)
 			{

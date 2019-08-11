@@ -50,7 +50,7 @@ namespace WebFileShare
 
 		private void ShowContentButton_Click(object sender, System.EventArgs e)
 		{
-			string key = KeyTextBox.Text.Trim();
+			string key = KeyTextBox.Text.Trim().Replace("'", "''");
 
 			if (key.Length > 0)
 			{
