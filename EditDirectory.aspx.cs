@@ -26,7 +26,6 @@ namespace WebFileShare
 
 		private string login = "";
 		private string name = "";
-
 		private string visibleName = "";
 
 		private void Page_Load(object sender, System.EventArgs e)
@@ -94,7 +93,7 @@ namespace WebFileShare
 
 		private void SaveButton_Click(object sender, System.EventArgs e)
 		{
-			string newVisibleName = VisibleNameTextBox.Text.Trim();
+			string newVisibleName = VisibleNameTextBox.Text.Trim().Replace("'", "''");
 
 			if (newVisibleName.Length > 0)
 			{
