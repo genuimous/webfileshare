@@ -207,7 +207,8 @@ begin
     d.psk,
     d.directory
   from
-    dbo.directories d join dbo.parts p on p.id = d.part_id
+    dbo.directories d 
+    join dbo.parts p on p.id = d.part_id
   where
     p.owner = @owner
   order by
