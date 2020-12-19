@@ -37,7 +37,7 @@ namespace WebFileShare
 				login = (string)(Session["admin_username"]);
 				name = (string)(Session["dir_name"]);
 
-				SqlDataReader dataReader = Database.OpenQuery("select visible_name from available_directories('" + login + "') where directory = '" + name + "'");
+				SqlDataReader dataReader = Database.OpenQuery("select visible_name from available_directories('" + SqlHelper.NormalizeParameter(login) + "') where directory = '" + SqlHelper.NormalizeParameter(name) + "'");
 
 				if (dataReader.Read())
 				{
@@ -93,18 +93,18 @@ namespace WebFileShare
 
 		private void SaveButton_Click(object sender, System.EventArgs e)
 		{
-			string newVisibleName = VisibleNameTextBox.Text.Trim().Replace("'", "''");
+			string newVisibleName = VisibleNameTextBox.Text.Trim();
 
 			if (newVisibleName.Length > 0)
 			{
 				if (newVisibleName != visibleName)
 				{
-					Database.ExecQuery("exec dbo.edit_directory '" + login + "', '" + name + "', '" + newVisibleName + "'");
+					Database.ExecQuery("exec dbo.edit_directory '" + SqlHelper.NormalizeParameter(login) + "', '" + SqlHelper.NormalizeParameter(name) + "', '" + SqlHelper.NormalizeParameter(newVisibleName) + "'");
 				}
 				
 				if (ChangeKeyCheckBox.Checked)
 				{
-					Database.ExecQuery("declare @psk nvarchar(100) exec dbo.change_key @psk, '" + login + "', '" + name + "'");
+					Database.ExecQuery("declare @psk nvarchar(100) exec dbo.change_key @psk, '" + SqlHelper.NormalizeParameter(login) + "', '" + SqlHelper.NormalizeParameter(name) + "'");
 				}
 
 				Response.Redirect("Admin.aspx");

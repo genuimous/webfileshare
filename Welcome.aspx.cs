@@ -50,7 +50,7 @@ namespace WebFileShare
 
 		private void ShowContentButton_Click(object sender, System.EventArgs e)
 		{
-			string key = KeyTextBox.Text.Trim().Replace("'", "''");
+			string key = KeyTextBox.Text.Trim();
 
 			if (key.Length > 0)
 			{
@@ -60,7 +60,7 @@ namespace WebFileShare
 				string directory = "";
 				string path = "";
 
-				SqlDataReader dataReader = Database.OpenQuery("select d.visible_name, d.directory, p.path from dbo.directories d join dbo.parts p on p.id = d.part_id where d.psk = '" + key + "'");
+				SqlDataReader dataReader = Database.OpenQuery("select d.visible_name, d.directory, p.path from dbo.directories d join dbo.parts p on p.id = d.part_id where d.psk = '" + SqlHelper.NormalizeParameter(key) + "'");
 
 				if (dataReader.Read())
 				{

@@ -67,7 +67,7 @@ namespace WebFileShare
 				DirTable.Rows.Add(tableHeaderRow);
 
 				// вывод имеющихся каталогов
-				SqlDataReader dataReader = Database.OpenQuery("select visible_name, psk, directory from dbo.available_directories('" + login + "')");
+				SqlDataReader dataReader = Database.OpenQuery("select visible_name, psk, directory from dbo.available_directories('" + SqlHelper.NormalizeParameter(login) + "')");
 
 				while (dataReader.Read())
 				{
@@ -167,13 +167,13 @@ namespace WebFileShare
 
 		private void AddButton_Click(object sender, System.EventArgs e)
 		{
-			string dirVisibleName = DirVisibleNameTextBox.Text.Trim().Replace("'", "''");
-			string dirName = DirNameTextBox.Text.Trim().Replace("'", "''");
+			string dirVisibleName = DirVisibleNameTextBox.Text.Trim();
+			string dirName = DirNameTextBox.Text.Trim();
 
 			if (dirName.Length > 0)
 			{
 				// проверка на дублирование
-				SqlDataReader dataReader = Database.OpenQuery("select * from dbo.available_directories('" + login + "') where directory = '" + dirName + "'");
+				SqlDataReader dataReader = Database.OpenQuery("select * from dbo.available_directories('" + SqlHelper.NormalizeParameter(login) + "') where directory = '" + SqlHelper.NormalizeParameter(dirName) + "'");
 				bool alreadyExists = dataReader.HasRows;
 				dataReader.Close();
 
@@ -184,7 +184,7 @@ namespace WebFileShare
 						dirVisibleName = dirName;
 					}
 					
-					Database.ExecQuery("declare @psk nvarchar(100) exec dbo.create_directory @psk, '" + login + "', '" + dirName + "', '" + dirVisibleName + "'");
+					Database.ExecQuery("declare @psk nvarchar(100) exec dbo.create_directory @psk, '" + SqlHelper.NormalizeParameter(login) + "', '" + SqlHelper.NormalizeParameter(dirName) + "', '" + SqlHelper.NormalizeParameter(dirVisibleName) + "'");
 
 					DirVisibleNameTextBox.Text = String.Empty;
 					DirNameTextBox.Text = String.Empty;
@@ -215,7 +215,7 @@ namespace WebFileShare
 		{
 			string dirName = Regex.Replace((sender as Button).ID, "^delete_", "");
 
-			Database.ExecQuery("exec dbo.delete_directory '" + login + "', '" + dirName + "'");
+			Database.ExecQuery("exec dbo.delete_directory '" + SqlHelper.NormalizeParameter(login) + "', '" + SqlHelper.NormalizeParameter(dirName) + "'");
 
 			Response.Redirect("Admin.aspx");
 		}

@@ -51,8 +51,8 @@ namespace WebFileShare
 
 		private void LogonButton_Click(object sender, System.EventArgs e)
 		{
-			string login = LoginTextBox.Text.Trim().Replace("'", "''");
-			string password = PasswordTextBox.Text.Trim().Replace("'", "''");
+			string login = LoginTextBox.Text.Trim();
+			string password = PasswordTextBox.Text.Trim();
 
 			if ((login.Length > 0) & (password.Length > 0))
 			{
@@ -60,7 +60,7 @@ namespace WebFileShare
 
 				string visibleName = "";
 
-				SqlDataReader dataReader = Database.OpenQuery("select visible_name from dbo.parts where owner = '" + login + "' and passphrase = '" + password + "'");
+				SqlDataReader dataReader = Database.OpenQuery("select visible_name from dbo.parts where owner = '" + SqlHelper.NormalizeParameter(login) + "' and passphrase = '" + SqlHelper.NormalizeParameter(password) + "'");
 
 				if (dataReader.Read())
 				{
